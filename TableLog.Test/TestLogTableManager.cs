@@ -6,6 +6,7 @@ namespace TableLog.Test
 {
     class TestLogTableManager
     {
+        public string ConnectionString { get; set; }
         public void Test1() 
         {
             TableLog.Business.LogTableManager manager = new Business.LogTableManager(new TableLog.Business.TestTableManager());
@@ -17,7 +18,7 @@ namespace TableLog.Test
         public void Test2()
         {
             TableLog.Business.LogTableManager manager = new Business.LogTableManager(new TableLog.Business.TableManager());
-            string result = manager.GenerateLogTableSchema("Data Source=192.168.1.110;Initial Catalog=Draft;UID=sqladmin;PWD=87654321;", "CM_Users", "Logging", "dbo");
+            string result = manager.GenerateLogTableSchema(this.ConnectionString, "CM_Users", "Logging", "dbo");
 
             Console.WriteLine(result);
         }

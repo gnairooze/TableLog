@@ -4,10 +4,11 @@ namespace TableLog.Test
 {
     class Program
     {
+        static string _ConnectionString = "Data Source=192.168.1.110;Initial Catalog=Draft;UID=sqladmin;PWD=87654321;";
         static void Main(string[] args)
         {
-            TestLogTableManager test = new TestLogTableManager();
-            test.Test2();
+            TestTriggerManager test = new TestTriggerManager() { ConnectionString = _ConnectionString};
+            test.TestUpdateDummy();
         }
     }
 }

@@ -4,11 +4,8 @@ using System.Text;
 
 namespace TableLog.Business
 {
-    public class LogTableManager
+    public class LogTableManager:Manager
     {
-        ITableManager _TableManager = null;
-        List<string> _ReservedNames = new List<string>() { "ID", "Create_Date", "Correlation_ID", "Is_Old"};
-
         public LogTableManager(ITableManager tableManager)
         {
             this._TableManager = tableManager;
@@ -29,6 +26,7 @@ namespace TableLog.Business
             result.AppendLine($"(");
             result.AppendLine($"\t[ID] [bigint] identity(1,1) not null,");
             result.AppendLine($"\t[Is_Old] [bit] not null,");
+            result.AppendLine($"\t[Action] [varchar](8) not null,");
             result.AppendLine($"\t[Create_Date] [datetime] not null,");
             result.AppendLine($"\t[Correlation_ID] [uniqueidentifier] not null,");
 
@@ -50,7 +48,7 @@ namespace TableLog.Business
             return result.ToString();
         }
 
-        private string CalcualteFieldLength(Models.Column column)
+        protected string CalcualteFieldLength(Models.Column column)
         {
             if (column.DataType.ToLower().Contains("char"))
             {
@@ -61,8 +59,7 @@ namespace TableLog.Business
                 return string.Empty;
             }
         }
-
-        private string CalculateNullableField(Models.Column column)
+        protected string CalculateNullableField(Models.Column column)
         {
             if (column.IsRequired)
             {
@@ -71,17 +68,6 @@ namespace TableLog.Business
             else
             {
                 return "null";
-            }
-        }
-        private string CalculateColumnName(string tableName, Models.Column column)
-        {
-            if(_ReservedNames.Contains(column.Name)) //reserved for columns in the log table
-            {
-                return $"{tableName}_{column.Name}";
-            }
-            else
-            {
-                return column.Name;
             }
         }
     }
