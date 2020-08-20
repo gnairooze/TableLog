@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TableLog.WPF", "TableLog.WPF\TableLog.WPF.csproj", "{276A3B40-F99B-4443-91DD-09306537EFE2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TableLog.WPF", "TableLog.WPF\TableLog.WPF.csproj", "{276A3B40-F99B-4443-91DD-09306537EFE2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TableLog.Business", "TableLog.Business\TableLog.Business.csproj", "{19BFE933-344E-4F65-BEE2-77A5E56ED1AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TableLog.Test", "TableLog.Test\TableLog.Test.csproj", "{42A37E58-AC66-4274-B74D-9097862878DD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{276A3B40-F99B-4443-91DD-09306537EFE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{276A3B40-F99B-4443-91DD-09306537EFE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{276A3B40-F99B-4443-91DD-09306537EFE2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19BFE933-344E-4F65-BEE2-77A5E56ED1AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19BFE933-344E-4F65-BEE2-77A5E56ED1AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19BFE933-344E-4F65-BEE2-77A5E56ED1AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19BFE933-344E-4F65-BEE2-77A5E56ED1AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42A37E58-AC66-4274-B74D-9097862878DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42A37E58-AC66-4274-B74D-9097862878DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42A37E58-AC66-4274-B74D-9097862878DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42A37E58-AC66-4274-B74D-9097862878DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
