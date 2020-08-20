@@ -123,8 +123,8 @@ namespace TableLog.Business
                 {
                     CollationName = checkStringNull(reader["collation_name"]),
                     DataType = reader["data_type"].ToString(),
-                    IsPrimary = bool.Parse(reader["is_primary"].ToString()),
-                    IsRequired = bool.Parse(reader["is_required"].ToString()),
+                    IsPrimary = reader["is_primary"].ToString() == "1",
+                    IsRequired = reader["is_required"].ToString() == "1",
                     MaxLength = checkIntegerNull(reader["max_length"]),
                     Name = reader["column_name"].ToString()
                 });

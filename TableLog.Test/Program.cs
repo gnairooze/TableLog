@@ -7,7 +7,7 @@ namespace TableLog.Test
         static void Main(string[] args)
         {
             TestLogTableManager test = new TestLogTableManager();
-            test.Test1();
+            test.Test2();
         }
     }
 }
