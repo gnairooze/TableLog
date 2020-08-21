@@ -243,14 +243,28 @@ namespace TableLog.Test
             if (!System.IO.Directory.Exists("result"))
             {
                 System.IO.Directory.CreateDirectory("result");
+                System.IO.Directory.CreateDirectory("result\\source");
+                System.IO.Directory.CreateDirectory("result\\target");
             }
-            _FileManager.SaveFile(false, "result\\"+SourceTable + "_Log_Create_Table.sql", tableScript);
+
+            if (!System.IO.Directory.Exists("result\\source"))
+            {
+                System.IO.Directory.CreateDirectory("result\\source");
+            }
+
+            if (!System.IO.Directory.Exists("result\\target"))
+            {
+                System.IO.Directory.CreateDirectory("result\\target");
+            }
+
+
+            _FileManager.SaveFile(false, "result\\target\\"+SourceTable + "_Log_Create_Table.sql", tableScript);
             string deleteTriggerScript = triggerManager.GenerateTriggerOnDelete(ConnectionString, SourceDB, SourceSchema, SourceTable, TargetDB, TargetSchema);
-            _FileManager.SaveFile(false, "result\\" + SourceTable + "_Trigger_LogOnDelete.sql", deleteTriggerScript);
+            _FileManager.SaveFile(false, "result\\source\\" + SourceTable + "_Trigger_LogOnDelete.sql", deleteTriggerScript);
             string insertTriggerScript = triggerManager.GenerateTriggerOnInsert(ConnectionString, SourceDB, SourceSchema, SourceTable, TargetDB, TargetSchema);
-            _FileManager.SaveFile(false, "result\\" + SourceTable + "_Trigger_LogOnInsert.sql", insertTriggerScript);
+            _FileManager.SaveFile(false, "result\\source\\" + SourceTable + "_Trigger_LogOnInsert.sql", insertTriggerScript);
             string updateTriggerScript = triggerManager.GenerateTriggerOnUpdate(ConnectionString, SourceDB, SourceSchema, SourceTable, TargetDB, TargetSchema);
-            _FileManager.SaveFile(false, "result\\" + SourceTable + "_Trigger_LogOnUpdate.sql", updateTriggerScript);
+            _FileManager.SaveFile(false, "result\\source\\" + SourceTable + "_Trigger_LogOnUpdate.sql", updateTriggerScript);
         }
 
         private static void SetConnectionString()
