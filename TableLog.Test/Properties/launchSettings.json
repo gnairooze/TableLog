@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "TableLog.Test": {
+      "commandName": "Project",
+      "commandLineArgs": "--real --source-connection-string\"Data Source=192.168.1.110;Initial Catalog=Draft;UID=sqladmin;PWD=87654321;\" --source-dbDraft --source-schemadbo --source-tableUsers --target-dbLogging --target-schemadbo"
+    }
+  }
+}
