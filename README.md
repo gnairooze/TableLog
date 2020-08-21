@@ -1,3 +1,5 @@
+![.NET Core](https://github.com/gnairooze/TableLog/workflows/.NET%20Core/badge.svg)
+
 # TableLog
 Auto Generate Log Tables from original table schema read from Sql DB.
 
