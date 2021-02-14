@@ -3,6 +3,30 @@
 # TableLog
 Auto Generate Log Tables from original table schema read from Sql DB.
 
-# Sample
+# Help
 
-TableLog.Test.exe --real --source-connection-string"Data Source=192.168.1.110;Initial Catalog=Draft;UID=sqladmin;PWD=87654321;" --source-dbDraft --source-schemadbo --source-tableUsers --target-dbLogging --target-schemadbo
+## Example
+
+TableLog.Command --mode Real --source-connection-string "Data Source=.; Initial Catalog=Draft; Integrated Security=true;" --source-db Draft  --source-schema dbo --source-table Users --target-db Logging --target-schema dbo
+
+## Arguments
+
+  -m, --mode                        (Default: Help) Set run mode: TestDummy,
+                                    TestReal, Real
+
+  -c, --source-connection-string    Set source connection string
+
+  -w, --source-db                   Set source database name
+
+  -e, --source-schema               (Default: dbo) Set source schema
+
+  -r, --source-table                Set source table name
+
+  -s, --target-db                   Set target database name
+
+  -d, --target-schema               (Default: dbo) Set target schema
+
+  --help                            Display this help screen.
+
+  --version                         Display version information.
+  

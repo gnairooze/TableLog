@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TableLog.Test
+namespace TableLog.Command
 {
-    class TestLogTableManager
+    internal class TestLogTableManager
     {
         public string ConnectionString { get; set; }
-        public void TestDummy() 
+        public void TestDummy()
         {
             TableLog.Business.LogTableManager manager = new Business.LogTableManager(new TableLog.Business.TestTableManager());
             string result = manager.GenerateLogTableSchema("dummy", "CM_Users", "Logs", "dbo");

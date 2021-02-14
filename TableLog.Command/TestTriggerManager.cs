@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TableLog.Test
+namespace TableLog.Command
 {
-    class TestTriggerManager
+    internal class TestTriggerManager
     {
         public string ConnectionString { get; set; }
         public void TestInsertDummy()
