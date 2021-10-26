@@ -77,13 +77,13 @@ namespace TableLog.Business
 	                        on C.TABLE_NAME = TC.TABLE_NAME
 	                        and C.TABLE_SCHEMA = TC.TABLE_SCHEMA
 	                        and C.TABLE_CATALOG = TC.TABLE_CATALOG
+				and TC.CONSTRAINT_TYPE = 'PRIMARY KEY'
                         left join INFORMATION_SCHEMA.KEY_COLUMN_USAGE as KU
 	                        on TC.CONSTRAINT_NAME = KU.CONSTRAINT_NAME 
 	                        and C.COLUMN_NAME = KU.COLUMN_NAME
 	                        and C.TABLE_NAME = KU.TABLE_NAME
 	                        and C.TABLE_SCHEMA = KU.TABLE_SCHEMA
 	                        and C.TABLE_CATALOG = KU.TABLE_CATALOG
-	                        and TC.CONSTRAINT_TYPE = 'PRIMARY KEY'
                         where C.TABLE_NAME = @name
                         order by 
 	                        table_name, 
