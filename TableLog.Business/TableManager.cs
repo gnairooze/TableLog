@@ -121,11 +121,11 @@ namespace TableLog.Business
             {
                 table.Columns.Add(new Models.Column()
                 {
-                    CollationName = checkStringNull(reader["collation_name"]),
+                    CollationName = CheckStringNull(reader["collation_name"]),
                     DataType = reader["data_type"].ToString(),
                     IsPrimary = reader["is_primary"].ToString() == "1",
                     IsRequired = reader["is_required"].ToString() == "1",
-                    MaxLength = checkIntegerNull(reader["max_length"]),
+                    MaxLength = CheckIntegerNull(reader["max_length"]),
                     Name = reader["column_name"].ToString()
                 });
             }
@@ -133,7 +133,7 @@ namespace TableLog.Business
             return table;
         }
 
-        private string checkStringNull(object v)
+        private string CheckStringNull(object v)
         {
             if (v == DBNull.Value)
             {
@@ -145,7 +145,7 @@ namespace TableLog.Business
             }
         }
 
-        private int? checkIntegerNull(object v)
+        private int? CheckIntegerNull(object v)
         {
             if (v == DBNull.Value)
             {

@@ -11,7 +11,7 @@ namespace TableLog.Business
             this._TableManager = tableManager;
         }
 
-        private string generateTriggerStart(string originalDbName, string originalTableFullName, string triggerName, string triggerAction)
+        private string GenerateTriggerStart(string originalDbName, string originalTableFullName, string triggerName, string triggerAction)
         {
             StringBuilder result = new StringBuilder();
 
@@ -31,7 +31,7 @@ namespace TableLog.Business
 
             return result.ToString();
         }
-        private string generateCommonInsert(Models.Table table, string targetDbName, string logTableFullName, int isOld, string triggerAction, string triggerTable)
+        private string GenerateCommonInsert(Models.Table table, string targetDbName, string logTableFullName, int isOld, string triggerAction, string triggerTable)
         {
             StringBuilder result = new StringBuilder();
             string originalTableName = table.Name;
@@ -63,7 +63,7 @@ namespace TableLog.Business
 
             return result.ToString();
         }
-        private string generateTriggerEnd()
+        private string GenerateTriggerEnd()
         {
             StringBuilder result = new StringBuilder();
 
@@ -87,9 +87,9 @@ namespace TableLog.Business
 
             Models.Table table = _TableManager.ReadTableSchema(originalConnectionString, originalTableName);
 
-            result.AppendLine(generateTriggerStart(originalDbName, originalTableFullName, triggerName, triggerAction));
-            result.AppendLine(generateCommonInsert(table, targetDbName, logTableFullName, isOld, triggerAction, triggerTable));
-            result.AppendLine(generateTriggerEnd());
+            result.AppendLine(GenerateTriggerStart(originalDbName, originalTableFullName, triggerName, triggerAction));
+            result.AppendLine(GenerateCommonInsert(table, targetDbName, logTableFullName, isOld, triggerAction, triggerTable));
+            result.AppendLine(GenerateTriggerEnd());
             
 
             return result.ToString();
@@ -108,9 +108,9 @@ namespace TableLog.Business
 
             Models.Table table = _TableManager.ReadTableSchema(originalConnectionString, originalTableName);
 
-            result.AppendLine(generateTriggerStart(originalDbName, originalTableFullName, triggerName, triggerAction));
-            result.AppendLine(generateCommonInsert(table, targetDbName, logTableFullName, isOld, triggerAction, triggerTable));
-            result.AppendLine(generateTriggerEnd());
+            result.AppendLine(GenerateTriggerStart(originalDbName, originalTableFullName, triggerName, triggerAction));
+            result.AppendLine(GenerateCommonInsert(table, targetDbName, logTableFullName, isOld, triggerAction, triggerTable));
+            result.AppendLine(GenerateTriggerEnd());
 
             return result.ToString();
         }
@@ -128,12 +128,12 @@ namespace TableLog.Business
 
             Models.Table table = _TableManager.ReadTableSchema(originalConnectionString, originalTableName);
 
-            result.AppendLine(generateTriggerStart(originalDbName, originalTableFullName, triggerName, triggerAction));
-            result.AppendLine(generateCommonInsert(table, targetDbName, logTableFullName, isOld, triggerAction, triggerTable));
+            result.AppendLine(GenerateTriggerStart(originalDbName, originalTableFullName, triggerName, triggerAction));
+            result.AppendLine(GenerateCommonInsert(table, targetDbName, logTableFullName, isOld, triggerAction, triggerTable));
             triggerTable = "inserted";
             isOld = 0;
-            result.AppendLine(generateCommonInsert(table, targetDbName, logTableFullName, isOld, triggerAction, triggerTable));
-            result.AppendLine(generateTriggerEnd());
+            result.AppendLine(GenerateCommonInsert(table, targetDbName, logTableFullName, isOld, triggerAction, triggerTable));
+            result.AppendLine(GenerateTriggerEnd());
 
             return result.ToString();
         }

@@ -9,7 +9,7 @@ namespace TableLog.Command
 {
     class Program
     {
-        static FileManagerCore.Controller _FileManager = new FileManagerCore.Controller();
+        static readonly FileManagerCore.Controller _FileManager = new ();
         static ParserResult<Options> _ParserResult;
 
         static void Main(string[] args)
@@ -29,7 +29,7 @@ namespace TableLog.Command
         {
             bool invalid = false;
 
-            if(errs != null && errs.Count() > 0)
+            if(errs != null && errs.Any())
             {
                 bool helpRequested = errs.Any(e => 
                 e.Tag == ErrorType.HelpRequestedError 
@@ -78,7 +78,7 @@ namespace TableLog.Command
         private static bool IsValidForRealOperation(Options opts, out string result)
         {
             bool isValid = true;
-            StringBuilder reason = new StringBuilder();
+            StringBuilder reason = new ();
 
             if (String.IsNullOrEmpty(opts.SourceConnectionString))
             {
@@ -121,10 +121,9 @@ namespace TableLog.Command
         }
         private static void RunReal(Options opts)
         {
-            string reason;
 
             #region validate
-            bool isValid = IsValidForRealOperation(opts, out reason);
+            bool isValid = IsValidForRealOperation(opts, out string reason);
 
             if (!isValid)
             {
@@ -137,9 +136,9 @@ namespace TableLog.Command
             }
             #endregion
 
-            TableManager tableManager = new TableManager();
-            LogTableManager logTableManager = new LogTableManager(tableManager);
-            TriggerManager triggerManager = new TriggerManager(tableManager);
+            TableManager tableManager = new ();
+            LogTableManager logTableManager = new (tableManager);
+            TriggerManager triggerManager = new (tableManager);
 
             string tableScript = logTableManager.GenerateLogTableSchema(opts.SourceConnectionString, opts.SourceTable, opts.TargetDB, opts.TargetSchema);
             
@@ -184,8 +183,8 @@ namespace TableLog.Command
                 return;
             }
 
-            TestLogTableManager managerTable = new TestLogTableManager();
-            TestTriggerManager managerTrigger = new TestTriggerManager();
+            TestLogTableManager managerTable = new ();
+            TestTriggerManager managerTrigger = new ();
 
             if (!isDummy)
             {
