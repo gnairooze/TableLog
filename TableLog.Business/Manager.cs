@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace TableLog.Business
 {
@@ -10,7 +11,8 @@ namespace TableLog.Business
 
         protected string CalculateColumnName(string tableName, Models.Column column)
         {
-            if (_ReservedNames.Contains(column.Name)) //reserved for columns in the log table
+            //if the column name is a reserved name regardless of the case, then we need to prefix it with the table name
+            if (_ReservedNames.Contains(column.Name, StringComparer.OrdinalIgnoreCase))
             {
                 return $"{tableName}_{column.Name}";
             }
