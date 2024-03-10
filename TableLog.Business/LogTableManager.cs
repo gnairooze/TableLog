@@ -52,7 +52,14 @@ namespace TableLog.Business
         {
             if (column.DataType.ToLower().Contains("char"))
             {
-                return $"({column.MaxLength})";
+                if (column.MaxLength > 0)
+                {
+                    return $"({column.MaxLength})";
+                }
+                else
+                {
+                    return "(max)";
+                }
             }
             else
             {
