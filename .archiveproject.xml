@@ -1,0 +1,12 @@
+<configuration>
+	<targetPath>f:\Data\My Projects\TableLog</targetPath>
+	<attendedRun>false</attendedRun>
+	<ignoreList>
+		<ignore>bin</ignore>
+		<ignore>obj</ignore>
+		<ignore>.git</ignore>
+		<ignore>.github</ignore>
+		<ignore>.vs</ignore>
+		<ignore>node_modules</ignore>
+	</ignoreList>
+</configuration>
